@@ -65,4 +65,13 @@ To contribute, please follow the following steps:
 5. Open a pull request to merge your changes into the main branch.
 
 # Team Member
-* 
+* Hemanth Bugata
+* Kushal Sapra
+* Hardik Malani
+* Suraj Thammi
+
+# Acknowledgements
+
+We are very grateful for these organizations for their contributions to our dapp:
+* Fantom communities for providing the blockchain networks and smart contract ecosystem that InnerSerenity runs on.
+* Amazon for providing DynamoDB as the database system within InnerSerenity's backend.
