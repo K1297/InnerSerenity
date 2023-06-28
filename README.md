@@ -14,7 +14,9 @@ Professionals, in turn, create comprehensive profiles highlighting their experti
 
 Once users find a professional aligned with their requirements, InnerSerenity facilitates the appointment process, streamlining scheduling and eliminating administrative burdens. Users can request appointments, and professionals can accept or decline based on their availability, ensuring efficient and timely support. InnerSerenity also incorporates a rating system, empowering users to provide feedback and rate the professionals they engage with. This feedback loop promotes accountability, quality improvement, and transparency, benefiting both professionals and users in their mental health journey.
 
-# features
+# InnerSerenity Code Repositories
+
+# Features
 * **User Profiles:** Users can create profiles by providing their name, age, and gender. This information helps professionals understand their users better.
 * **Professional Profiles:** Mental health professionals can create profiles by specifying their name and specialization. This feature allows users to search for professionals based on their specific needs.
 * **Search Professionals:** Users can search for professionals based on specialization. This functionality helps users find the most suitable professional to address their mental health concerns.
@@ -25,4 +27,42 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 
 # Architecture
 
-## components
+## Components
+
+* **Frontend:** frontend of InnerSerenity is responsible for providing users with an intuitive and interactive user interface to access the DApp's features.
+* **Sign in with metamask:** InnerSerenity integrates the "Sign in with MetaMask" feature, which allows users to securely authenticate and interact with the DApp using their MetaMask wallet.
+* **Backend:** The backend of InnerSerenity handles the server-side operations and serves as the intermediary between the frontend and other external services. It manages user authentication, handles data storage and retrieval and communication with other components.
+* **DynamoDB:** DynamoDB is utilized as the database system within InnerSerenity's backend.
+* **InnerSerenity Smart contract:** The InnerSerenity Smart Contract is deployed on the Fantom blockchain. It implements the core functionalities and logic of InnerSerenity, including user profile management, professional registration, appointment requests, conversations, and the rating system.
+
+# Local Installation
+
+# Usage
+
+* User profiles with personalized information for a comprehensive understanding of user needs.
+* Professional profiles highlighting expertise and specialization.
+* Search functionality to find professionals based on specific mental health requirements.
+* Appointment request system for streamlined scheduling.
+* Conversations to ensure secure and confidential communication.
+* Rating system to provide feedback and continuous improvement for professionals.
+
+# Smart Contract Documentation
+
+# Troubleshooting
+**Metamask Login Issue**
+
+If you are unable to sign in with Metamask, please ensure that your Metamask wallet is properly configured and has sufficient funds to pay for the transaction fees. Additionally, ensure that you are signed into Metamask and have granted permission for the dapp to access your wallet.
+
+# Contribution Guidelines
+We welcome contributions from anyone who would like to help improve our dapp.
+
+To contribute, please follow the following steps:
+
+1. Fork the repository to your own GitHub account: 
+2. Create a new branch from the main branch for your changes.
+3. Make your changes and commit them with clear commit messages.
+4. Push your changes to your forked repository.
+5. Open a pull request to merge your changes into the main branch.
+
+# Team Member
+* 
