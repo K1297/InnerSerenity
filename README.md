@@ -10,7 +10,7 @@ InnerSerenity is a decentralized application (DApp) dedicated to promoting menta
 
 The DApp begins with the creation of user profiles, where individuals can provide pertinent information about themselves, including their name, age, and gender. These profiles enable mental health professionals to gain valuable insights into their users' backgrounds, helping them tailor their approach and provide personalized support that aligns with the users' unique needs. Professionals, in turn, create comprehensive profiles highlighting their expertise, qualifications, and specialization areas. This allows users to search for professionals based on specific criteria, such as specialization, therapeutic approach, or treatment modality, ensuring they find the most suitable match to address their mental health concerns.
 
-Once users find a professional aligned with their requirements, InnerSerenity facilitates the appointment process, streamlining scheduling and eliminating administrative burdens. Users can request appointments, and professionals can accept or decline based on their availability, ensuring efficient and timely support. InnerSerenity also incorporates a rating system, empowering users to provide feedback and rate the professionals they engage with. This feedback loop promotes accountability, quality improvement, and transparency, benefiting both professionals and users in their mental health journey.
+Once users find a professional aligned with their requirements, InnerSerenity facilitates the appointment process, streamlining scheduling and eliminating administrative burdens. Users can request appointments, and professionals can accept or decline based on their availability, ensuring efficient and timely support. InnerSerenity also incorporates a rating system, empowering users to provide feedback and rate the professionals they engage with. This feedback loop promotes accountability, quality improvement, and transparency, benefiting both professionals and users in their mental health journey. The platform also incorporates a unique event ticketing feature, where specialized professionals can organize transformative events and issue ERC1155 tokens to participants. These events foster personal growth, enlightenment, and self-discovery, offering a holistic approach to mental well-being.
 
 # InnerSerenity Code Repositories
 
@@ -22,6 +22,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * **Secure Conversations:** Once an appointment is confirmed, users and professionals can engage in secure conversations. The DApp ensures that only the participating users and professionals have access to the conversation.
 * **Messaging:** Users and professionals can exchange messages within their conversations. This feature enables effective communication and the sharing of important information related to mental health.
 * **Professional Ratings:** After a session, users can rate professionals based on their experience. The rating system helps maintain accountability and provides valuable feedback for professionals to improve their services.
+* **Organize Event:** Specialized professionals can organize transformative events and issue ERC1155 tokens to participants, facilitating personal growth, enlightenment, and self-discovery.
 
 # Architecture
 
@@ -32,6 +33,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * **Backend:** The backend of InnerSerenity handles the server-side operations and serves as the intermediary between the frontend and other external services. It manages user authentication, handles data storage and retrieval and communication with other components.
 * **DynamoDB:** DynamoDB is utilized as the database system within InnerSerenity's backend.
 * **InnerSerenity Smart contract:** The InnerSerenity Smart Contract is deployed on the Fantom blockchain. It implements the core functionalities and logic of InnerSerenity, including user profile management, professional registration, appointment requests, conversations, and the rating system.
+* **Event Ticketing Smart Contract:** The Event Ticketing smart contract facilitates the seamless organization and distribution of event tickets while ensuring transparency and security through the power of blockchain technology. This smart contract allows professionals specializing in various fields to create and issue ERC1155 tokens as event tickets.
 
 # Local Installation
 
@@ -43,6 +45,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * Appointment request system for streamlined scheduling.
 * Conversations to ensure secure and confidential communication.
 * Rating system to provide feedback and continuous improvement for professionals.
+* Participate in transformative events, gain insights, and explore personal growth opportunities.
 
 # Smart Contract Documentation
 
@@ -71,5 +74,5 @@ To contribute, please follow the following steps:
 # Acknowledgements
 
 We are very grateful for these organizations for their contributions to our dapp:
-* Fantom communities for providing the blockchain networks and smart contract ecosystem that InnerSerenity runs on.
+* Fantom community for providing the blockchain network and smart contract ecosystem that InnerSerenity runs on.
 * Amazon for providing DynamoDB as the database system within InnerSerenity's backend.
