@@ -48,6 +48,133 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * Participate in transformative events, gain insights, and explore personal growth opportunities.
 
 # Smart Contract Documentation
+Our decentralized content sharing dapp uses two different smart contracts to implement two different functionalities:
+
+ERC-1155 TicketFactory contract: This contract allows the creation and management of multiple fungible tokens, each representing a ticket for a specific event. It is suitable for event ticketing as it allows the creation of a large number of identical tickets for an event and easy tracking of their distribution and sale.
+
+ERC-721 ProfileImage contract: This contract allows the creation and management of unique, non-fungible tokens (NFTs), each representing a user's profile image. It is suitable for profile image uploads as it ensures that each user's profile image is unique and cannot be duplicated or replicated. This contract also allows for easy management and tracking of the ownership of each user's profile image.
+
+# ERC-1155 TicketFactory Contract
+We use the ERC-1155 TicketFactory contract for event ticketing. This contract allows the creation and management of multiple fungible tokens ( i.e. tokens that are interchangeable with one another ), each representing a ticket for a specific event. This contract is suitable for event ticketing as it allows us to:
+
+Create a large number of identical tickets for an event
+Easily track the distribution and sale of tickets
+Keep track of the total number of tickets created, the number of tickets sold, the remaining available tickets, event start date and time, and event end date and time.
+The TicketFactory contract inherits from ERC1155 and adds the following functionality:
+# Structs
+1. Ticket Struct
+
+The "Ticket" structure is a key component of our ERC-1155 TicketFactory smart contract. It represents an event hosted by the user and has the following properties:
+
+struct Ticket {
+uint256 id;
+address creator;
+uint256 totalSupply;
+uint256 availableSupply;
+uint256 price;
+uint256 saleStart;
+uint256 saleEnd;
+string metadataURI;
+}
+This structure is used to define and keep track of different events and their ticket details within the contract. It allows us to easily create and manage multiple fungible tokens (i.e. tokens that are interchangeable with one another), each representing an event. With the help of this structure, we can keep track of the total number of events created, the number of tickets sold, the remaining available tickets, event start date and time, event end date and time, and other metadata associated with the event.
+
+# Functions
+1. Create Ticket Function
+
+The "createTicket" function is a public function defined within our ERC-1155 TicketFactory smart contract. It allows users to create a new event ticket by specifying the following parameters:
+
+"totalSupply": The total number of tickets available for the event.
+"price": The price of each ticket in wei.
+"saleStart": The start date and time of the ticket sale.
+"saleEnd": The end date and time of the ticket sale.
+"metadataURI": The URI of the metadata associated with the event.
+The function performs various checks to ensure that the inputs provided are valid. For instance, it requires the total supply and price to be greater than 0 and the sale end time to be after the sale start time.
+
+By calling this function, users can create and manage multiple fungible tokens, each representing a ticket for a specific event. This enables efficient tracking of ticket distribution and sale within the contract.
+
+function createTicket( uint256 totalSupply, uint256 price, uint256 saleStart, uint256 saleEnd, string  memory metadataURI ) {}
+2. Buy Ticket Function
+
+The "buyTicket" function is another public function defined within our ERC-1155 TicketFactory smart contract. It allows users to purchase event tickets by specifying the following parameters:
+
+"ticketId": The ID of the ticket to be purchased.
+"quantity": The number of tickets to be purchased.
+By calling this function, users can buy tickets for events in a secure and efficient manner, with the smart contract ensuring that all conditions are met before executing the transaction.
+
+   function buyTicket(uint256 ticketId, uint256 quantity) public payable {}
+3. Get Unsold Tickets Function
+
+The "getUnsoldTickets" function is a public view function defined within the ERC-1155 TicketFactory smart contract. It allows users to retrieve an array of all unsold tickets available for purchase, by iterating through all tickets and identifying those that have available supply greater than zero. The function creates a new array to hold the unsold tickets, adds each unsold ticket to the array in reverse order, and returns the array to the user.
+
+function getUnsoldTickets() public view returns (Ticket[] memory) {}
+
+4. Get My Events Function
+
+The "getMyEvents" function is another public view function defined within the ERC-1155 TicketFactory smart contract. It allows users to retrieve an array of all events they have created, by iterating through all tickets and identifying those whose "creator" address matches the caller's address. The function creates a new array to hold the user's events, adds each event to the array in reverse order, and returns the array to the user.
+
+function getMyEvents() public view returns (Ticket[] memory) {}
+
+5. Get My Tickets Function
+
+The "getMyTickets" function is also a public view function defined within the ERC-1155 TicketFactory smart contract. It allows users to retrieve an array of all tickets they have purchased, by iterating through all tickets and identifying those that have been bought by the caller's address. The function creates a new array to hold the user's tickets, adds each ticket to the array in reverse order, and returns the array to the user.
+
+function getMyTickets() public view returns (Ticket[] memory) {}
+
+# Events
+1. TicketCreated - emitted when a new event ticket is created.
+
+event TicketCreated( uint256 indexed ticketId, address indexed creator, uint256 totalSupply, uint256 price, uint256 saleStart, uint256 saleEnd, string metadataURI );
+
+This event is emitted when a new event ticket is created, with the following parameters:
+
+"ticketId": The ID of the new ticket.
+"creator": The address of the creator of the ticket.
+"totalSupply": The total supply of the ticket.
+"price": The price of each ticket.
+"saleStart": The timestamp of when the ticket sale begins.
+"saleEnd": The timestamp of when the ticket sale ends.
+"metadataURI": The URI of the metadata associated with the ticket.
+2. TicketBought - emitted when a user buys an event ticket.
+
+event TicketBought( uint256 indexed ticketId, address indexed buyer, uint256 quantity, uint256 amount );
+
+This event is emitted when a user buys an event ticket, with the following parameters:
+
+"ticketId": The ID of the purchased ticket.
+"buyer": The address of the buyer of the ticket.
+"quantity": The number of tickets purchased.
+"amount": The total amount paid for the tickets.
+ERC-721 ProfileImage Contract
+We use the ERC-721 ProfileImage contract for profile image uploads for our users. This contract allows us to create and manage unique, non-fungible tokens (NFTs), each representing a user's profile image. This contract is suitable for profile image uploads as it ensures that:
+
+Each user's profile image is unique and cannot be duplicated or replicated
+We can easily manage and track the ownership of each user's profile image.
+The ProfileImage contract inherits from ERC721 and adds the following functionality:
+
+# Structs
+1. RenderToken struct
+
+struct RenderToken {
+uint256 id;
+string uri;
+string space;
+}
+Functions
+1. Mint NFT Function
+
+The mint function mints a new NFT with a given _uri and assigns it to a given recipient. It returns the ID of the new NFT:
+
+function mint(address recipient, string memory _uri) public returns (uint256) {}
+2. Get All Tokens Function
+
+The getAlltoken function returns an array of RenderToken structs representing all the existing NFTs:
+
+function getAlltoken() public view returns (RenderToken[] memory) {}
+Events
+1. TokenMinted - emitted when a new NFT is minted.
+
+event TokenMinted(uint256 tokenId);
+We emit the TokenMinted event whenever a new Profile Image NFT is minted in our smart contract, which includes the newly minted token ID (tokenId). We extract this ID from the blockchain transaction log and store it in Sanity against the user's profile. To ensure additional security, we verify ownership of the NFT by calling the ownerOf(tokenId) function from the ERC-721 standard each time a user's profile page is loaded on the frontend.
 
 # Troubleshooting
 **Metamask Login Issue**
