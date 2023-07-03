@@ -40,27 +40,46 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 
 # Local Installation
 * clone the repository https://github.com/suraj719/innerserenity
-    ### `git clone https://github.com/suraj719/innerserenity`
+```
+ git clone https://github.com/suraj719/innerserenity
+```
 
 * change to server directory and install all the dependencies
-    ### `cd server`
-    ### `npm install`
+```
+cd server
+npm install
+```
 
 * create a .env file and add your AWS account details which you can find in security credentials -> access key
-    ### `AWS_ACCESS_KEY_ID = "paste your aws access key_id"`
-    ### `AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key"`
+```
+  AWS_ACCESS_KEY_ID = "paste your aws access key_id
+  AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key
+```
 
 * Now, start the server
-    ### `npm start`
+
+```
+npm start
+```
 
 * Now, go to client directory and install the dependencies
-    ### `npm install`
+
+```
+npm install
+```
 
 * create a .env file and add backend url(which we created just now in port 8000)
-    ### `VITE_APP_BACKEND_URL = "http://localhost:8000"`
+
+```
+VITE_APP_BACKEND_URL = "http://localhost:8000
+```
 
 * start the server by using npm run dev, and the server will be started on port 5173
-    ### Go to  `http://localhost:5173/` to access the app.
+Go to
+```
+http://localhost:5173/` to access the app
+```
+
 # Usage
 
 * User profiles with personalized information for a comprehensive understanding of user needs.
@@ -81,20 +100,23 @@ SPDX-License-Identifier: MIT
 Solidity Version: ^0.8.6
 
 **Structs**
-User
+**1. User**
 
+```
 struct User {
     string name;
     uint age;
     string gender;
 }
+```
 
 * **name:** The name of the user.
 * **age:** The age of the user.
 * **gender:** The gender of the user.
 
-Professional
+**2. Professional**
 
+```
 struct Professional {
     string name;
     string specialization;
@@ -102,6 +124,7 @@ struct Professional {
     uint totalRatings;
     uint totalScore;
 }
+```
 
 * **name:** The name of the professional.
 * **specialization:** The specialization area of the professional.
@@ -111,44 +134,58 @@ struct Professional {
 
 **State Variables**
 
+```
 mapping(address => User) public users;
 mapping(address => Professional) public professionals;
 address[] public professionalAddresses;
+```
 
 * **users:** A mapping that stores user profiles based on their Ethereum addresses.
 * **professionals:** A mapping that stores professional profiles based on their Ethereum addresses.
 * **professionalAddresses:** An array that stores the Ethereum addresses of registered professionals.
-  
+
 **Events**
 
-AppointmentRequested
+**AppointmentRequested**
 
+```
 event AppointmentRequested(address user, address professional);
+```
 
 * **user:** The Ethereum address of the user who requested the appointment.
 * **professional:** The Ethereum address of the professional for whom the appointment is requested.
 
 **Functions**
 
-createUser
+**1. createUser**
 
+```
 function createUser(string memory _name, uint _age, string memory _gender) public
+```
 
-createProfessional
+**2. createProfessional**
 
+```
 function createProfessional(string memory _name, string memory _specialization) public
+```
 
-searchProfessionals
+**3. searchProfessionals**
 
+```
 function searchProfessionals(string memory _specialization) public view returns (address[] memory)
+```
 
-requestAppointment
+**4. requestAppointment**
 
+```
 function requestAppointment(address _professionalAddress) public
+```
 
-rateProfessional
+**5. rateProfessional**
 
+```
 function rateProfessional(address _professionalAddress, uint _score) public
+```
 
 ## Event Ticketing Smart Contract
 
@@ -168,17 +205,20 @@ The EventTicketing contract imports the following libraries from the OpenZeppeli
 
 **State Variables**
 
+```
 using Counters for Counters.Counter;
 using SafeMath for uint256;
 
 Counters.Counter private _ticketIds;
 string public name;
 string public symbol;
+```
 
 **Structs**
 
-Ticket
+**Ticket**
 
+```
 struct Ticket {
     uint256 id;
     address creator;
@@ -189,6 +229,7 @@ struct Ticket {
     uint256 saleEnd;
     string metadataURI;
 }
+```
 
 * **id:** The unique identifier of the ticket.
 * **creator:** The address of the ticket creator.
@@ -201,12 +242,15 @@ struct Ticket {
 
 **Mapping**
 
+```
 mapping(uint256 => Ticket) public tickets;
+```
 
 **Events**
 
-TicketCreated
+**TicketCreated**
 
+```
 event TicketCreated(
     uint256 indexed ticketId,
     address indexed creator,
@@ -216,28 +260,33 @@ event TicketCreated(
     uint256 saleEnd,
     string metadataURI
 );
+```
 
-TicketBought
+**TicketBought**
 
+```
 event TicketBought(
     uint256 indexed ticketId,
     address indexed buyer,
     uint256 quantity,
     uint256 amount
 );
+```
 
 **Constructor**
 
+```
 constructor(string memory baseURI) ERC1155(baseURI) {
     name = "InnerSerenity Events";
     symbol = "InnSer";
 }
-
+```
 
 **Functions**
 
-createTicket
+**1. createTicket**
 
+```
 function createTicket(
     uint256 totalSupply,
     uint256 price,
@@ -245,30 +294,37 @@ function createTicket(
     uint256 saleEnd,
     string memory metadataURI
 ) public
+```
 
-buyTicket
+**2. buyTicket**
 
+```
 function buyTicket(uint256 ticketId, uint256 quantity) public payable
+```
 
-setTokenURI
+**3. setTokenURI**
 
+```
 function setTokenURI(uint256 ticketId, string memory uri) public onlyOwner
+```
 
+**4. getUnsoldTickets**
 
-getUnsoldTickets
-
+```
 function getUnsoldTickets() public view returns (Ticket[] memory)
+```
 
+**5. getMyEvents**
 
-getMyEvents
-
+```
 function getMyEvents() public view returns (Ticket[] memory)
+```
 
+**6. getMyTickets**
 
-getMyTickets
-
+```
 function getMyTickets() public view returns (Ticket[] memory)
-
+```
 
 # Troubleshooting
 **Metamask Login Issue**
