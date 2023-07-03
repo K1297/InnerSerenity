@@ -93,6 +93,7 @@ The function performs various checks to ensure that the inputs provided are vali
 By calling this function, users can create and manage multiple fungible tokens, each representing a ticket for a specific event. This enables efficient tracking of ticket distribution and sale within the contract.
 
 function createTicket( uint256 totalSupply, uint256 price, uint256 saleStart, uint256 saleEnd, string  memory metadataURI ) {}
+
 2. Buy Ticket Function
 
 The "buyTicket" function is another public function defined within our ERC-1155 TicketFactory smart contract. It allows users to purchase event tickets by specifying the following parameters:
@@ -102,6 +103,7 @@ The "buyTicket" function is another public function defined within our ERC-1155 
 By calling this function, users can buy tickets for events in a secure and efficient manner, with the smart contract ensuring that all conditions are met before executing the transaction.
 
    function buyTicket(uint256 ticketId, uint256 quantity) public payable {}
+   
 3. Get Unsold Tickets Function
 
 The "getUnsoldTickets" function is a public view function defined within the ERC-1155 TicketFactory smart contract. It allows users to retrieve an array of all unsold tickets available for purchase, by iterating through all tickets and identifying those that have available supply greater than zero. The function creates a new array to hold the unsold tickets, adds each unsold ticket to the array in reverse order, and returns the array to the user.
