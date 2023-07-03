@@ -12,7 +12,6 @@ The DApp begins with the creation of user profiles, where individuals can provid
 
 Once users find a professional aligned with their requirements, InnerSerenity facilitates the appointment process, streamlining scheduling and eliminating administrative burdens. Users can request appointments, and professionals can accept or decline based on their availability, ensuring efficient and timely support. InnerSerenity also incorporates a rating system, empowering users to provide feedback and rate the professionals they engage with. This feedback loop promotes accountability, quality improvement, and transparency, benefiting both professionals and users in their mental health journey. The platform also incorporates a unique event ticketing feature, where specialized professionals can organize transformative events and issue ERC1155 tokens to participants. These events foster personal growth, enlightenment, and self-discovery, offering a holistic approach to mental well-being.
 
-# InnerSerenity Code Repositories
 
 # Features
 * **User Profiles:** Users can create profiles by providing their name, age, and gender. This information helps professionals understand their users better.
@@ -39,28 +38,47 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * **Event Ticketing Smart Contract:** The Event Ticketing smart contract facilitates the seamless organization and distribution of event tickets while ensuring transparency and security through the power of blockchain technology. This smart contract allows professionals specializing in various fields to create and issue ERC1155 tokens as event tickets.
 
 # Local Installation
-* clone the repository https://github.com/suraj719/innerserenity
-    ### `git clone https://github.com/suraj719/innerserenity`
+* clone the repository 
+```
+ git clone https://github.com/suraj719/innerserenity
+```
 
 * change to server directory and install all the dependencies
-    ### `cd server`
-    ### `npm install`
+```
+cd server
+npm install
+```
 
 * create a .env file and add your AWS account details which you can find in security credentials -> access key
-    ### `AWS_ACCESS_KEY_ID = "paste your aws access key_id"`
-    ### `AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key"`
+```
+  AWS_ACCESS_KEY_ID = "paste your aws access key_id
+  AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key
+```
 
 * Now, start the server
-    ### `npm start`
+
+```
+npm start
+```
 
 * Now, go to client directory and install the dependencies
-    ### `npm install`
+
+```
+npm install
+```
 
 * create a .env file and add backend url(which we created just now in port 8000)
-    ### `VITE_APP_BACKEND_URL = "http://localhost:8000"`
+
+```
+VITE_APP_BACKEND_URL = "http://localhost:8000
+```
 
 * start the server by using npm run dev, and the server will be started on port 5173
-    ### Go to  `http://localhost:5173/` to access the app.
+Go to
+```
+http://localhost:5173/` to access the app
+```
+
 # Usage
 
 * User profiles with personalized information for a comprehensive understanding of user needs.
@@ -103,20 +121,24 @@ SPDX-License-Identifier: MIT
 Solidity Version: ^0.8.6
 
 **Structs**
-User
 
+**1. User**
+
+```
 struct User {
     string name;
     uint age;
     string gender;
 }
+```
 
 * **name:** The name of the user.
 * **age:** The age of the user.
 * **gender:** The gender of the user.
 
-Professional
+**2. Professional**
 
+```
 struct Professional {
     string name;
     string specialization;
@@ -124,6 +146,7 @@ struct Professional {
     uint totalRatings;
     uint totalScore;
 }
+```
 
 * **name:** The name of the professional.
 * **specialization:** The specialization area of the professional.
@@ -133,45 +156,197 @@ struct Professional {
 
 **State Variables**
 
+```
 mapping(address => User) public users;
 mapping(address => Professional) public professionals;
 address[] public professionalAddresses;
+```
 
 * **users:** A mapping that stores user profiles based on their Ethereum addresses.
 * **professionals:** A mapping that stores professional profiles based on their Ethereum addresses.
 * **professionalAddresses:** An array that stores the Ethereum addresses of registered professionals.
-  
+
 **Events**
 
-AppointmentRequested
+**AppointmentRequested**
 
+```
 event AppointmentRequested(address user, address professional);
+```
 
 * **user:** The Ethereum address of the user who requested the appointment.
 * **professional:** The Ethereum address of the professional for whom the appointment is requested.
 
 **Functions**
 
-createUser
+**1. createUser**
 
+```
 function createUser(string memory _name, uint _age, string memory _gender) public
+```
 
-createProfessional
+**2. createProfessional**
 
+```
 function createProfessional(string memory _name, string memory _specialization) public
+```
 
-searchProfessionals
+**3. searchProfessionals**
 
+```
 function searchProfessionals(string memory _specialization) public view returns (address[] memory)
+```
 
-requestAppointment
+**4. requestAppointment**
 
+```
 function requestAppointment(address _professionalAddress) public
+```
 
-rateProfessional
+**5. rateProfessional**
 
+```
 function rateProfessional(address _professionalAddress, uint _score) public
+```
 
+## Event Ticketing Smart Contract
+
+The EventTicketing smart contract enables the creation, sale, and management of event tickets as ERC-1155 tokens. It allows users to create tickets with specified details, buy tickets, manage ticket metadata, and retrieve information about unsold tickets and tickets owned by users.
+
+**Contract Details**
+SPDX-License-Identifier: MIT
+Solidity Version: ^0.8.6
+
+**Libraries Used**
+The EventTicketing contract imports the following libraries from the OpenZeppelin Contracts library:
+
+* **ERC1155URIStorage:** Extends ERC1155 to include URI management for token metadata.
+* **Ownable:** Provides a basic access control mechanism with an owner address.
+* **Counters:** Provides an implementation of a counter that can be incremented or decremented.
+* **SafeMath:** Provides arithmetic operations with safety checks to prevent overflow/underflow errors.
+
+**State Variables**
+
+```
+using Counters for Counters.Counter;
+using SafeMath for uint256;
+
+Counters.Counter private _ticketIds;
+string public name;
+string public symbol;
+```
+
+**Structs**
+
+**Ticket**
+
+```
+struct Ticket {
+    uint256 id;
+    address creator;
+    uint256 totalSupply;
+    uint256 availableSupply;
+    uint256 price;
+    uint256 saleStart;
+    uint256 saleEnd;
+    string metadataURI;
+}
+```
+
+* **id:** The unique identifier of the ticket.
+* **creator:** The address of the ticket creator.
+* **totalSupply:** The total supply of the ticket.
+* **availableSupply:** The number of tickets available for sale.
+* **price:** The price of each ticket in wei.
+* **saleStart:** The start time of the ticket sale.
+* **saleEnd:** The end time of the ticket sale.
+* **metadataURI:** The URI for the metadata associated with the ticket.
+
+**Mapping**
+
+```
+mapping(uint256 => Ticket) public tickets;
+```
+
+**Events**
+
+**TicketCreated**
+
+```
+event TicketCreated(
+    uint256 indexed ticketId,
+    address indexed creator,
+    uint256 totalSupply,
+    uint256 price,
+    uint256 saleStart,
+    uint256 saleEnd,
+    string metadataURI
+);
+```
+
+**TicketBought**
+
+```
+event TicketBought(
+    uint256 indexed ticketId,
+    address indexed buyer,
+    uint256 quantity,
+    uint256 amount
+);
+```
+
+**Constructor**
+
+```
+constructor(string memory baseURI) ERC1155(baseURI) {
+    name = "InnerSerenity Events";
+    symbol = "InnSer";
+}
+```
+
+**Functions**
+
+**1. createTicket**
+
+```
+function createTicket(
+    uint256 totalSupply,
+    uint256 price,
+    uint256 saleStart,
+    uint256 saleEnd,
+    string memory metadataURI
+) public
+```
+
+**2. buyTicket**
+
+```
+function buyTicket(uint256 ticketId, uint256 quantity) public payable
+```
+
+**3. setTokenURI**
+
+```
+function setTokenURI(uint256 ticketId, string memory uri) public onlyOwner
+```
+
+**4. getUnsoldTickets**
+
+```
+function getUnsoldTickets() public view returns (Ticket[] memory)
+```
+
+**5. getMyEvents**
+
+```
+function getMyEvents() public view returns (Ticket[] memory)
+```
+
+**6. getMyTickets**
+
+```
+function getMyTickets() public view returns (Ticket[] memory)
+```
 
 # Troubleshooting
 **Metamask Login Issue**
@@ -183,7 +358,7 @@ We welcome contributions from anyone who would like to help improve our dapp.
 
 To contribute, please follow the following steps:
 
-1. Fork the repository to your own GitHub account: 
+1. Fork the repository to your own GitHub account: https://github.com/suraj719/innerserenity
 2. Create a new branch from the main branch for your changes.
 3. Make your changes and commit them with clear commit messages.
 4. Push your changes to your forked repository.
