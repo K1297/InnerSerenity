@@ -38,7 +38,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * **Event Ticketing Smart Contract:** The Event Ticketing smart contract facilitates the seamless organization and distribution of event tickets while ensuring transparency and security through the power of blockchain technology. This smart contract allows professionals specializing in various fields to create and issue ERC1155 tokens as event tickets.
 
 # Local Installation
-* clone the repository https://github.com/suraj719/innerserenity
+* clone the repository 
 ```
  git clone https://github.com/suraj719/innerserenity
 ```
