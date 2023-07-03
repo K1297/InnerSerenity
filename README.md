@@ -25,6 +25,8 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 * **Organize Event:** Specialized professionals can organize transformative events and issue ERC1155 tokens to participants, facilitating personal growth, enlightenment, and self-discovery.
 
 # Architecture
+![image](https://github.com/K1297/InnerSerenity/assets/102855092/8a37de35-32f6-44c3-b52f-a1b00e2bee5c)
+
 
 ## Components
 
