@@ -40,27 +40,27 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 
 # Local Installation
 * clone the repository https://github.com/suraj719/innerserenity
-	  ### git clone https://github.com/suraj719/innerserenity
+    ### `git clone https://github.com/suraj719/innerserenity`
 
 * change to server directory and install all the dependencies
-	  ### `cd server`
-	  ### `npm install`
+    ### `cd server`
+    ### `npm install`
 
 * create a .env file and add your AWS account details which you can find in security credentials -> access key
-	  ### `AWS_ACCESS_KEY_ID = "paste your aws access key_id"`
-	  ### `AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key"`
+    ### `AWS_ACCESS_KEY_ID = "paste your aws access key_id"`
+    ### `AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key"`
 
 * Now, start the server
-	  ### `npm start`
+    ### `npm start`
 
 * Now, go to client directory and install the dependencies
     ### `npm install`
 
 * create a .env file and add backend url(which we created just now in port 8000)
-	  ### `VITE_APP_BACKEND_URL = "http://localhost:8000"`
+    ### `VITE_APP_BACKEND_URL = "http://localhost:8000"`
 
 * start the server by using npm run dev, and the server will be started on port 5173
-	   Go to ### `http://localhost:5173/` to access the app.
+    Go to ### `http://localhost:5173/` to access the app.
 # Usage
 
 * User profiles with personalized information for a comprehensive understanding of user needs.
