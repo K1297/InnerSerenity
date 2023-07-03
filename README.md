@@ -60,7 +60,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
     ### `VITE_APP_BACKEND_URL = "http://localhost:8000"`
 
 * start the server by using npm run dev, and the server will be started on port 5173
-    Go to ### `http://localhost:5173/` to access the app.
+    ### Go to  `http://localhost:5173/` to access the app.
 # Usage
 
 * User profiles with personalized information for a comprehensive understanding of user needs.
