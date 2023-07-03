@@ -150,6 +150,125 @@ rateProfessional
 
 function rateProfessional(address _professionalAddress, uint _score) public
 
+## Event Ticketing Smart Contract
+
+The EventTicketing smart contract enables the creation, sale, and management of event tickets as ERC-1155 tokens. It allows users to create tickets with specified details, buy tickets, manage ticket metadata, and retrieve information about unsold tickets and tickets owned by users.
+
+**Contract Details**
+SPDX-License-Identifier: MIT
+Solidity Version: ^0.8.6
+
+**Libraries Used**
+The EventTicketing contract imports the following libraries from the OpenZeppelin Contracts library:
+
+* **ERC1155URIStorage:** Extends ERC1155 to include URI management for token metadata.
+* **Ownable:** Provides a basic access control mechanism with an owner address.
+* **Counters:** Provides an implementation of a counter that can be incremented or decremented.
+* **SafeMath:** Provides arithmetic operations with safety checks to prevent overflow/underflow errors.
+
+**State Variables**
+
+using Counters for Counters.Counter;
+using SafeMath for uint256;
+
+Counters.Counter private _ticketIds;
+string public name;
+string public symbol;
+
+**Structs**
+
+Ticket
+
+struct Ticket {
+    uint256 id;
+    address creator;
+    uint256 totalSupply;
+    uint256 availableSupply;
+    uint256 price;
+    uint256 saleStart;
+    uint256 saleEnd;
+    string metadataURI;
+}
+
+* **id:** The unique identifier of the ticket.
+* **creator:** The address of the ticket creator.
+* **totalSupply:** The total supply of the ticket.
+* **availableSupply:** The number of tickets available for sale.
+* **price:** The price of each ticket in wei.
+* **saleStart:** The start time of the ticket sale.
+* **saleEnd:** The end time of the ticket sale.
+* **metadataURI:** The URI for the metadata associated with the ticket.
+
+**Mapping**
+
+mapping(uint256 => Ticket) public tickets;
+
+**Events**
+
+TicketCreated
+
+event TicketCreated(
+    uint256 indexed ticketId,
+    address indexed creator,
+    uint256 totalSupply,
+    uint256 price,
+    uint256 saleStart,
+    uint256 saleEnd,
+    string metadataURI
+);
+
+TicketBought
+
+event TicketBought(
+    uint256 indexed ticketId,
+    address indexed buyer,
+    uint256 quantity,
+    uint256 amount
+);
+
+**Constructor**
+
+constructor(string memory baseURI) ERC1155(baseURI) {
+    name = "InnerSerenity Events";
+    symbol = "InnSer";
+}
+
+
+**Functions**
+
+createTicket
+
+function createTicket(
+    uint256 totalSupply,
+    uint256 price,
+    uint256 saleStart,
+    uint256 saleEnd,
+    string memory metadataURI
+) public
+
+buyTicket
+
+function buyTicket(uint256 ticketId, uint256 quantity) public payable
+
+setTokenURI
+
+function setTokenURI(uint256 ticketId, string memory uri) public onlyOwner
+
+
+getUnsoldTickets
+
+function getUnsoldTickets() public view returns (Ticket[] memory)
+
+
+getMyEvents
+
+function getMyEvents() public view returns (Ticket[] memory)
+
+
+getMyTickets
+
+function getMyTickets() public view returns (Ticket[] memory)
+
 
 # Troubleshooting
 **Metamask Login Issue**
