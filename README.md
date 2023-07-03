@@ -12,7 +12,6 @@ The DApp begins with the creation of user profiles, where individuals can provid
 
 Once users find a professional aligned with their requirements, InnerSerenity facilitates the appointment process, streamlining scheduling and eliminating administrative burdens. Users can request appointments, and professionals can accept or decline based on their availability, ensuring efficient and timely support. InnerSerenity also incorporates a rating system, empowering users to provide feedback and rate the professionals they engage with. This feedback loop promotes accountability, quality improvement, and transparency, benefiting both professionals and users in their mental health journey. The platform also incorporates a unique event ticketing feature, where specialized professionals can organize transformative events and issue ERC1155 tokens to participants. These events foster personal growth, enlightenment, and self-discovery, offering a holistic approach to mental well-being.
 
-# InnerSerenity Code Repositories
 
 # Features
 * **User Profiles:** Users can create profiles by providing their name, age, and gender. This information helps professionals understand their users better.
@@ -100,6 +99,7 @@ SPDX-License-Identifier: MIT
 Solidity Version: ^0.8.6
 
 **Structs**
+
 **1. User**
 
 ```
