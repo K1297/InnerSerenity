@@ -88,7 +88,7 @@ struct Professional {
 * **totalRatings:** The total number of ratings received by the professional.
 * **totalScore:** The cumulative score of ratings received by the professional.
 
-State Variables
+**State Variables**
 
 mapping(address => User) public users;
 mapping(address => Professional) public professionals;
@@ -98,7 +98,37 @@ address[] public professionalAddresses;
 * **professionals:** A mapping that stores professional profiles based on their Ethereum addresses.
 * **professionalAddresses:** An array that stores the Ethereum addresses of registered professionals.
   
-  
+**Events**
+
+AppointmentRequested
+
+event AppointmentRequested(address user, address professional);
+
+* **user:** The Ethereum address of the user who requested the appointment.
+* **professional:** The Ethereum address of the professional for whom the appointment is requested.
+
+**Functions**
+
+createUser
+
+function createUser(string memory _name, uint _age, string memory _gender) public
+
+createProfessional
+
+function createProfessional(string memory _name, string memory _specialization) public
+
+searchProfessionals
+
+function searchProfessionals(string memory _specialization) public view returns (address[] memory)
+
+requestAppointment
+
+function requestAppointment(address _professionalAddress) public
+
+rateProfessional
+
+function rateProfessional(address _professionalAddress, uint _score) public
+
 
 # Troubleshooting
 **Metamask Login Issue**
