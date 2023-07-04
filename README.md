@@ -54,6 +54,11 @@ npm install
   AWS_ACCESS_KEY_ID = "paste your aws access key_id
   AWS_SECRET_ACCESS_KEY = "paste your aws_secret_access_key
 ```
+* Copy and rename a `.env.example` file into `.env` file and add your PRIVATE_KEY and FTMSCAN_API_KEY.
+```
+PRIVATE_KEY = paste Your wallet private key
+FTMSCAN_API_KEY = paste Your Fantom Scan API key
+```
 
 * Now, start the server
 
@@ -65,6 +70,10 @@ npm start
 
 ```
 npm install
+```
+* Compile the smart contracts
+```
+npm run compile
 ```
 
 * create a .env file and add backend url(which we created just now in port 8000)
@@ -78,6 +87,17 @@ Go to
 ```
 http://localhost:5173/` to access the app
 ```
+* Deploy & Verify smart contracts on Fantom mainnet
+```
+npm run deploy
+```
+
+* Deploy & Verify smart contracts on Fantom testnet
+```
+npm run deploy-testnet
+```
+
+* Check the deployed smart contract addresses in the /contract_addresses/address_ftm.md
 
 # Usage
 
@@ -90,28 +110,7 @@ http://localhost:5173/` to access the app
 * Participate in transformative events, gain insights, and explore personal growth opportunities.
 
 # Smart Contract Documentation
-# Local Installation
-* clone the repository https://github.com/suraj719/innerserenity
-    ### `git clone https://github.com/suraj719/innerserenity`
 
-* change to contracts directory and install all the dependencies
-    ### `cd contracts`
-    ### `npm install`
-
-* Copy and rename a `.env.example` file into `.env` file and add your PRIVATE_KEY and FTMSCAN_API_KEY.
-    ### `PRIVATE_KEY = "paste Your wallet private key"`
-    ### `FTMSCAN_API_KEY = "paste Your Fantom Scan API key"`
-
-* Compile the smart contracts
-    ### `npm run compile`
-
-* Deploy && Verify smart contracts on Fantom mainnet
-    ### `npm run deploy`
-
-* Deploy && Verify smart contracts on Fantom testnet
-    ### `npm run deploy-testnet`
-
-* Check the deployed smart contract addresses in the /contract_addresses/address_ftm.md
 ## InnerSerenity DApp
 
 The InnerSerenity DApp is a smart contract that facilitates the creation and interaction of users and professionals within the InnerSerenity platform. It allows users to create profiles, search for professionals based on specialization, request appointments, and rate professionals based on their services.
