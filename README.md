@@ -40,7 +40,7 @@ Once users find a professional aligned with their requirements, InnerSerenity fa
 # Local Installation
 * clone the repository 
 ```
- git clone https://github.com/suraj719/innerserenity
+ git clone https://github.com/suraj719/innerserenity.git
 ```
 
 * change to server directory and install all the dependencies
